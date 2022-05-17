@@ -1,68 +1,36 @@
 
 import React from "react";
 
-const reducerFunction = (state, action) => {
+import { BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom'
 
-  switch (action.type) {
-    case 'increament':
-      return {
-        ...state, 
-        count: state.count + 1
-      }
-      
-    case 'decrement': 
-      return {
-      ...state, 
-      count: state.count - 1
-    }
+import Home from "./components/Home";
+import Page from "./components/Page";
 
-    case 'inCount': 
-    return {
-      ...state, 
-      count: action.payload
-    }
-  
-    default:
-      return state
-  }
-
-} 
-
-const initialState = {
-  count: 0
-}
 
 function App() {
 
-  const [input, setInput] = React.useState(0)
-  const [state, dispatch] = React.useReducer(reducerFunction, initialState)
+ 
   
  return (
    <div className="app">
-     <h2>Reducer example</h2>
-     <div>
-       <label>Start Count</label>
-       <input
-        type='number'
-        onChange={e => setInput(parseInt(e.target.value))}
-       />
-       <br/>
-       <button
-       onClick={() => dispatch({
-         type: 'inCount', 
-         payload: input
-       })}
-       >Initalize counter</button>
-     </div>
+     <h1>Context example</h1>
+     <Router>
+       <nav>
+         <ul>
+           <li>
+             <Link to="/home">Home</Link>
+           </li>
+           <li>
+             <Link to="/page">Page</Link>
+           </li>
+         </ul>
+       </nav>
 
-     <p>{state.count}</p>
-
-     <button onClick={() => dispatch({
-       type: 'increament'
-     })}>increament</button>
-     <button onClick={() => dispatch({
-       type: 'decrement'
-     })}>decreament</button>
+       <Routes>
+         <Route exact path="/home" element={<Home />} />
+         <Route exact path="/page" element={<Page />}/>
+       </Routes>
+     </Router>
    </div>
  )
 }
