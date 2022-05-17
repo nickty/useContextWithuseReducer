@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom'
 import Home from "./components/Home";
 import Page from "./components/Page";
 
+import AppState from "./context/AppState";
+
 
 function App() {
 
@@ -25,11 +27,13 @@ function App() {
            </li>
          </ul>
        </nav>
-
-       <Routes>
+      <AppState>
+      <Routes>
          <Route exact path="/home" element={<Home />} />
          <Route exact path="/page" element={<Page />}/>
        </Routes>
+      </AppState>
+       
      </Router>
    </div>
  )
