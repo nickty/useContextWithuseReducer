@@ -8,7 +8,8 @@ const AppState = (props) => {
   return (
     <AppContext.Provider value={{
         message: 'Thjis is from from context', 
-        isAuth
+        isAuth, 
+        setIsAuth
     }}>
         {props.children}
     </AppContext.Provider>
