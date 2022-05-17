@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
+
+import appContext from '../context/app-context'
 
 const Page = () => {
+
+    const {message} = useContext(appContext)
   return (
-    <div>Page</div>
+      <>
+
+<div>Page</div>
+    {message}
+      </>
+    
   )
 }
 
